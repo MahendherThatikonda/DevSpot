@@ -2,6 +2,8 @@ using DevSpot.Data;
 using DevSpot.Constants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using DevSpot.Repository;
+using DevSpot.Models;
 
 
 namespace DevSpot
@@ -27,6 +29,8 @@ namespace DevSpot
             })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.AddScoped<IRepository<JobPosting>, JobPostingRepository>();
 
             var app = builder.Build();
 
