@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="DevSpot/DevSpot.csproj" />
+  <Project Path="DevSpots.Tests/DevSpots.Tests.csproj" Id="e33fec52-2226-484d-9619-d61d6cd146ea" />
 </Solution>
