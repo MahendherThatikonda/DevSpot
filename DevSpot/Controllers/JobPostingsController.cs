@@ -48,9 +48,10 @@ namespace DevSpot.Controllers
                     //PostedDate=
                 };
                 await _repository.AddASync(jobPosting);
+                return RedirectToAction(nameof(Index));
             }
             // 
-            return RedirectToAction(nameof(Index));
+            return View(jobPostingvm);
         }
     }
 }
