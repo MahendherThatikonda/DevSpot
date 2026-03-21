@@ -16,11 +16,12 @@
             <h3><strong>Company:</strong>@jobPosting.Company</h3>
             <h3><strong>Location:</strong>@jobPosting.Location</h3>
             <h3><strong>Posted Date:</strong>@jobPosting.PostedDate.ToShortDateString()</h3>
+            <p>Authenticated: @User.Identity.IsAuthenticated</p>
+            <p>Username: @User.Identity.Name</p>
             @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Employer))
             {<div>
                     <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-sm btn-danger">Delete</button>
             </div>
-                
             }
         </div>
     }

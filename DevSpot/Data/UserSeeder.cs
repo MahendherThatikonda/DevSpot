@@ -29,7 +29,7 @@ namespace DevSpot.Data
 
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, Roles.Admin);
+                    await userManager.AddToRoleAsync(user, role);
                 }
                 else
                 {

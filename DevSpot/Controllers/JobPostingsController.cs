@@ -26,11 +26,19 @@ namespace DevSpot.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
+
+            if (User.IsInRole(Roles.Employer))
+            {
+                var allJobPostings= await _repository.GetAllSync();
+                var userId = _userManager.GetUserId(User);
+                var filteredJobPostings = allJobPostings.Where(jp => jp.UserId == userId);
+                return View(filteredJobPostings);
+            }
             var jobPostings = await _repository.GetAllSync();
             return View(jobPostings);
         }
 
-        [Authorize(Roles ="Admin, Employer")]
+        [Authorize(Roles ="Admin,Employer")]
         public IActionResult Create()
         {
             return View();
@@ -61,7 +69,7 @@ namespace DevSpot.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Admin, Employer")]
+        [Authorize(Roles = "Admin,Employer")]
         public async Task<IActionResult> Delete(int id)
         {
             var jobPosting = await _repository.GetbyIdAsync(id);
