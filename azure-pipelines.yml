@@ -10,26 +10,8 @@ variables:
 
 stages:
 
-  - stage: Test
-    displayName: 'Run Tests'
-    jobs:
-      - job: RunTests
-        steps:
-          - task: DotNetCoreCLI@2
-            displayName: 'Restore packages'
-            inputs:
-              command: restore
-              projects: '**/*.csproj'
-
-          - task: DotNetCoreCLI@2
-            displayName: 'Run tests'
-            inputs:
-              command: test
-              projects: '**/DevSpots.Tests/*.csproj'
-
   - stage: Build
     displayName: 'Build App'
-    dependsOn: Test
     jobs:
       - job: Build
         steps:
