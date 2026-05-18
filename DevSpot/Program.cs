@@ -18,8 +18,8 @@ namespace DevSpot
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(
+                    builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
@@ -42,6 +42,10 @@ namespace DevSpot
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+
+                // Auto-create database on startup ← ADD THIS
+                var db = services.GetRequiredService<ApplicationDbContext>();
+                db.Database.Migrate();
 
                 RoleSeeded.SeedRolesAsync(services).Wait();
                 UserSeeder.SeedUsersAsync(services).Wait();

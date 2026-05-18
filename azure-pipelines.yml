@@ -52,4 +52,5 @@ stages:
                   inputs:
                     azureSubscription: '$(azureSubscription)'
                     appName: '$(appName)'
+                    deployToSlotOrASE: false
                     package: '$(Pipeline.Workspace)/drop/**/*.zip'
