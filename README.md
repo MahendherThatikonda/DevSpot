@@ -13,3 +13,5 @@ Tech Stack
 C#, ASP.NET Core MVC, Entity Framework Core, SQL Server, Azure, Bootstrap
 
 Built to strengthen my full-stack development, deployment, and software architecture skills.
+
+# Keywords: Web App, FrontEnd, UI, User Interface
